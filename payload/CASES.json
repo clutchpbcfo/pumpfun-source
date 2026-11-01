@@ -1,0 +1,41 @@
+[
+  {
+    "id": "boolean-valid",
+    "axis": "[true, false]",
+    "files": [
+      "true",
+      "false"
+    ],
+    "expected_base_checker_exit": 1,
+    "expected_native_exits": [
+      0,
+      0
+    ]
+  },
+  {
+    "id": "boolean-missing",
+    "axis": "[true, false]",
+    "files": [
+      "True",
+      "False"
+    ],
+    "expected_base_checker_exit": 0,
+    "expected_native_exits": [
+      2,
+      2
+    ]
+  },
+  {
+    "id": "string-control",
+    "axis": "[\"True\", \"False\"]",
+    "files": [
+      "True",
+      "False"
+    ],
+    "expected_base_checker_exit": 0,
+    "expected_native_exits": [
+      0,
+      0
+    ]
+  }
+]
