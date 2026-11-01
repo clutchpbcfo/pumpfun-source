@@ -1,0 +1,10 @@
+name: Owned matrix path fixture
+on: [push]
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        flag: [true, false]
+    steps:
+      - run: python -B scripts/flag-${{ matrix.flag }}.py

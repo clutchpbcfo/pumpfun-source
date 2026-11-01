@@ -1,0 +1,36 @@
+name: Bounded current-main boolean integration
+on:
+  push:
+    branches: ['validation/workflow-boolean-current-main-20261101']
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    strategy:
+      matrix:
+        include:
+          - true_flag: true
+            false_flag: false
+            literal_true: 'True'
+            literal_false: 'False'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.3'
+      - name: Qualify and compare base and patched checker
+        run: bash payload/bootstrap.sh '${{ matrix.true_flag }}' '${{ matrix.false_flag }}' '${{ matrix.literal_true }}' '${{ matrix.literal_false }}'
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: workflow-boolean-current-main-receipts
+          path: |
+            probe-receipts/*.json
+            probe-receipts/*.stdout
+            probe-receipts/*.stderr
+          if-no-files-found: warn
