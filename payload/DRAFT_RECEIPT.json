@@ -1,0 +1,411 @@
+{
+  "prepared_at_utc": "2026-10-31T23:55:58.773449+00:00",
+  "repository": "lalalune/pumpfun-source",
+  "base": "9bd38c7d5a4684b647ab59fc8942ed56e990e3b3",
+  "status": "local_draft_only_not_runtime_validated_not_published",
+  "changed_path": "scripts/amm_sell/test_sell_identity.py",
+  "changes": [
+    {
+      "line": 83,
+      "before": "self.assertEqual(report['score_version'], 5)",
+      "after": "self.assertEqual(report['score_version'], 6)"
+    },
+    {
+      "line": 144,
+      "before": "self.assertEqual(entry['inputs']['score_version'], 5)",
+      "after": "self.assertEqual(entry['inputs']['score_version'], 6)"
+    }
+  ],
+  "base_source_sha256": "77fe272220f42e3067e961d987e0e183fd2e817c822d3b7f6821688e3bd5271c",
+  "patched_source_sha256": "bb0ce7fdce57994fb6d631d6db3b1e70ab88a2aaf1b2310895ac48f2c963879a",
+  "patch_sha256": "42e1f62400343ba5745b1de22febf89e282d42932e4da83afb11ea15cc5d2638",
+  "static_checks": {
+    "source_blobs_match_github": true,
+    "only_two_assertion_constants_change": true,
+    "scorer_version_is_6": true,
+    "historical_cache_controls_preserved": true,
+    "dedicated_workflow_selects_affected_test": true,
+    "all_24_open_pr_file_lists_checked": true
+  },
+  "validation_proposal": {
+    "methods": [
+      "ImageIdentityTests.test_exact_all_three_files",
+      "ImageIdentityTests.test_attempt_cache_separates_old_meaning_and_preserves_new_metrics"
+    ],
+    "methods_per_revision": 2,
+    "revisions": [
+      "base",
+      "patched"
+    ],
+    "expected_base_result": "2 assertion failures, each reporting 6 != 5; any other outcome requires stopping",
+    "expected_patched_result": "2 tests pass",
+    "repository_python_modules_that_may_execute": [
+      "scripts/amm_sell/test_sell_identity.py",
+      "scripts/amm_sell/sell_score.py",
+      "scripts/amm_sell/try_sell.py",
+      "scripts/amm_sell/cache_inputs.py",
+      "scripts/amm_sell/ledger_io.py",
+      "scripts/window_elf_reader.py"
+    ],
+    "repository_files_read_as_hash_inputs_only": [
+      "scripts/amm_sell/native_build.py",
+      "scripts/amm_sell/workspace_recipe.py",
+      "scripts/amm_sell/metadata-map.json",
+      "scripts/amm_sell/ordered.ld"
+    ],
+    "module_import_inventory": [
+      {
+        "path": "scripts/amm_sell/test_sell_identity.py",
+        "sha256": "77fe272220f42e3067e961d987e0e183fd2e817c822d3b7f6821688e3bd5271c",
+        "imports": [
+          {
+            "line": 2,
+            "module": "pathlib",
+            "names": [
+              "Path"
+            ]
+          },
+          {
+            "line": 3,
+            "names": [
+              "hashlib"
+            ]
+          },
+          {
+            "line": 4,
+            "names": [
+              "importlib.util"
+            ]
+          },
+          {
+            "line": 5,
+            "names": [
+              "contextlib"
+            ]
+          },
+          {
+            "line": 6,
+            "names": [
+              "io"
+            ]
+          },
+          {
+            "line": 7,
+            "names": [
+              "json"
+            ]
+          },
+          {
+            "line": 8,
+            "names": [
+              "re"
+            ]
+          },
+          {
+            "line": 9,
+            "names": [
+              "struct"
+            ]
+          },
+          {
+            "line": 10,
+            "names": [
+              "sys"
+            ]
+          },
+          {
+            "line": 11,
+            "names": [
+              "tempfile"
+            ]
+          },
+          {
+            "line": 12,
+            "names": [
+              "types"
+            ]
+          },
+          {
+            "line": 13,
+            "names": [
+              "unittest"
+            ]
+          },
+          {
+            "line": 14,
+            "module": "unittest.mock",
+            "names": [
+              "patch"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "scripts/amm_sell/sell_score.py",
+        "sha256": "f195e542e822702d3b282a70ed19d08cd5f01711d085627da98dd4b4738c4744",
+        "imports": [
+          {
+            "line": 21,
+            "module": "pathlib",
+            "names": [
+              "Path"
+            ]
+          },
+          {
+            "line": 22,
+            "names": [
+              "argparse"
+            ]
+          },
+          {
+            "line": 23,
+            "names": [
+              "difflib"
+            ]
+          },
+          {
+            "line": 24,
+            "names": [
+              "hashlib"
+            ]
+          },
+          {
+            "line": 25,
+            "names": [
+              "json"
+            ]
+          },
+          {
+            "line": 26,
+            "names": [
+              "os"
+            ]
+          },
+          {
+            "line": 27,
+            "names": [
+              "struct"
+            ]
+          },
+          {
+            "line": 28,
+            "names": [
+              "sys"
+            ]
+          },
+          {
+            "line": 47,
+            "names": [
+              "elf_reader"
+            ]
+          },
+          {
+            "line": 50,
+            "names": [
+              "window_elf_reader"
+            ]
+          },
+          {
+            "line": 117,
+            "names": [
+              "subprocess"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "scripts/amm_sell/try_sell.py",
+        "sha256": "52b6016c5a847d8a38fd0ad53b87d98d3ec6b354d4946591d9471735ff2c26ce",
+        "imports": [
+          {
+            "line": 19,
+            "module": "pathlib",
+            "names": [
+              "Path"
+            ]
+          },
+          {
+            "line": 20,
+            "names": [
+              "argparse"
+            ]
+          },
+          {
+            "line": 21,
+            "names": [
+              "datetime"
+            ]
+          },
+          {
+            "line": 22,
+            "names": [
+              "fcntl"
+            ]
+          },
+          {
+            "line": 23,
+            "names": [
+              "hashlib"
+            ]
+          },
+          {
+            "line": 24,
+            "names": [
+              "json"
+            ]
+          },
+          {
+            "line": 25,
+            "names": [
+              "os"
+            ]
+          },
+          {
+            "line": 26,
+            "names": [
+              "sys"
+            ]
+          },
+          {
+            "line": 27,
+            "names": [
+              "tempfile"
+            ]
+          },
+          {
+            "line": 28,
+            "names": [
+              "uuid"
+            ]
+          },
+          {
+            "line": 33,
+            "names": [
+              "native_build"
+            ]
+          },
+          {
+            "line": 34,
+            "names": [
+              "sell_score"
+            ]
+          },
+          {
+            "line": 35,
+            "names": [
+              "cache_inputs"
+            ]
+          },
+          {
+            "line": 36,
+            "module": "ledger_io",
+            "names": [
+              "append_entry"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "scripts/amm_sell/cache_inputs.py",
+        "sha256": "836880b44a30ad17a1e5c46f7c82ac6bd59ae16514f85243c41e055680755d58",
+        "imports": [
+          {
+            "line": 2,
+            "names": [
+              "hashlib"
+            ]
+          },
+          {
+            "line": 3,
+            "names": [
+              "json"
+            ]
+          },
+          {
+            "line": 4,
+            "names": [
+              "os"
+            ]
+          },
+          {
+            "line": 5,
+            "module": "pathlib",
+            "names": [
+              "Path"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "scripts/amm_sell/ledger_io.py",
+        "sha256": "c8149d24bc34cf54410e1108829d7c89d1772be2d617aa4f8bca43f3387c0007",
+        "imports": [
+          {
+            "line": 2,
+            "names": [
+              "json"
+            ]
+          },
+          {
+            "line": 3,
+            "names": [
+              "os"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "scripts/window_elf_reader.py",
+        "sha256": "d3b57510531d7977110e73474cf89310b68bf6705d134ffb3bc759e18d30bedd",
+        "imports": [
+          {
+            "line": 7,
+            "module": "pathlib",
+            "names": [
+              "Path"
+            ]
+          },
+          {
+            "line": 8,
+            "names": [
+              "hashlib"
+            ]
+          },
+          {
+            "line": 9,
+            "names": [
+              "struct"
+            ]
+          }
+        ]
+      }
+    ],
+    "captured_program_files_in_bundle": 0,
+    "repository_discovery_permitted": false,
+    "local_repository_execution_permitted": false,
+    "execution_approved_by_this_draft": false
+  },
+  "current_batch": {
+    "repository_code_executed": false,
+    "tests_run": false,
+    "workers_or_chats_started": false,
+    "source_worktrees_modified": false,
+    "public_mutations": false
+  },
+  "limits": [
+    "Static preparation is not fresh before/after runtime validation.",
+    "Older #3765 runtime observations retain their original tested revisions and are not transferred to current main.",
+    "Full required suite and evidence verification remain unrun; no CI pass, reconstruction gain or Points award is claimed."
+  ],
+  "proposed_controller": {
+    "path": "run_named.py.disabled",
+    "sha256": "188d354bbf3f6834844ce9c700a5812e98f319207678f7eecbc8481647d905e1",
+    "static_parse_only": true,
+    "executed": false,
+    "qualified": false
+  },
+  "validation_plan_sha256": "cb08f9f3ca2fe54082538b8fb3af1aa6232b147ce648b727f3b991300aeee6d0",
+  "execution_authorization": "Operator approved one isolated two-method-per-revision fork validation job.",
+  "current_main_at_admission": "1f4e396b566274eda9e9859219614b9aaa8ae498",
+  "admitted_inputs_unchanged_from_frozen_base": true
+}

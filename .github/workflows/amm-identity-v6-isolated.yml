@@ -1,0 +1,31 @@
+name: AMM identity v6 two-method validation
+on:
+  push:
+    branches: [validation/amm-identity-v6-20261031]
+permissions:
+  contents: read
+jobs:
+  named-methods-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout validation data without persisted credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          lfs: false
+          submodules: false
+          fetch-depth: 1
+      - name: Stage only admitted public source data
+        run: python3 -I -S -B payload/prepare_linux_inputs.py "$RUNNER_TEMP/amm-identity-v6"
+      - name: Qualify controls and run the two named methods per revision
+        shell: bash
+        run: bash payload/run_linux_isolated.sh
+      - name: Retain only public validation receipts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: amm-identity-v6-two-methods
+          path: ${{ runner.temp }}/amm-identity-v6/public/
+          if-no-files-found: warn
+          retention-days: 7
